@@ -24,6 +24,7 @@ public class PublicEntryController {
             Map<String, Object> summary = new LinkedHashMap<>();
             summary.put("slug", entry.getSlug());
             summary.put("title", entry.getTitle());
+            summary.put("description", entry.getDescription());
             summary.put("hasArticle", entry.getArticleContent() != null
                     && !entry.getArticleContent().trim().isEmpty());
             summary.put("publishedAt", entry.getPublishedAt());

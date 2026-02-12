@@ -927,6 +927,15 @@ p {
   font-size: 1rem;
 }
 
+.entry-card-description {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 .entry-card-badge {
   display: inline-block;
   margin-top: 0.5rem;

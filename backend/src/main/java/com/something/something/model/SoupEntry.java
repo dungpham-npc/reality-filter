@@ -18,6 +18,9 @@ public class SoupEntry {
     @Column(nullable = false)
     private String title;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SoupStatus status;
@@ -57,11 +60,12 @@ public class SoupEntry {
     public SoupEntry() {
     }
 
-    public static SoupEntry create(String title, String slug) {
+    public static SoupEntry create(String title, String slug, String description) {
         SoupEntry entry = new SoupEntry();
         entry.id = UUID.randomUUID();
         entry.title = title;
         entry.slug = slug;
+        entry.description = description;
         entry.status = SoupStatus.DRAFT_EXAMPLE;
         entry.createdAt = Instant.now();
         entry.updatedAt = Instant.now();
@@ -92,6 +96,14 @@ public class SoupEntry {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public SoupStatus getStatus() {

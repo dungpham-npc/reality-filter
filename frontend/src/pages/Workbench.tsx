@@ -64,6 +64,9 @@ export default function Workbench() {
                             onClick={() => handleOpenEntry(entry.slug)}
                         >
                             <h3>{entry.title}</h3>
+                            {entry.description && (
+                                <p className="entry-card-description">{entry.description}</p>
+                            )}
                             {entry.hasArticle && (
                                 <span className="entry-card-badge">📖 Deep reading</span>
                             )}

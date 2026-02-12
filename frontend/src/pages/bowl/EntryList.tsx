@@ -25,6 +25,7 @@ export default function EntryList() {
     const [showCreate, setShowCreate] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [newSlug, setNewSlug] = useState('');
+    const [newDescription, setNewDescription] = useState('');
     const [creating, setCreating] = useState(false);
 
     useEffect(() => {
@@ -48,9 +49,10 @@ export default function EntryList() {
         e.preventDefault();
         setCreating(true);
         try {
-            const entry = await bowlCreateEntry(password, newTitle, newSlug);
+            const entry = await bowlCreateEntry(password, newTitle, newSlug, newDescription);
             setNewTitle('');
             setNewSlug('');
+            setNewDescription('');
             setShowCreate(false);
             navigate(`/bowl/entries/${entry.id}`);
         } catch (err: unknown) {
@@ -104,6 +106,13 @@ export default function EntryList() {
                             placeholder="Slug (URL-safe)"
                             value={newSlug}
                             onChange={(e) => setNewSlug(e.target.value)}
+                        />
+                        <textarea
+                            className="bowl-input"
+                            placeholder="Short description (shown on card)"
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                            style={{ resize: 'vertical', minHeight: '60px' }}
                         />
                         <button type="submit" className="btn btn-primary" disabled={creating || !newTitle || !newSlug}>
                             {creating ? 'Creating...' : 'Create'}

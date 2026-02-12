@@ -18,11 +18,11 @@ public class SoupEntryService {
         this.repository = repository;
     }
 
-    public SoupEntry createEntry(String title, String slug) {
+    public SoupEntry createEntry(String title, String slug, String description) {
         if (repository.existsBySlug(slug)) {
             throw new IllegalArgumentException("Slug '" + slug + "' already exists");
         }
-        SoupEntry entry = SoupEntry.create(title, slug);
+        SoupEntry entry = SoupEntry.create(title, slug, description);
         return repository.save(entry);
     }
 

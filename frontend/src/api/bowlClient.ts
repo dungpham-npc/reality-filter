@@ -5,6 +5,7 @@ export interface SoupEntryData {
     slug: string;
     title: string;
     status: 'DRAFT_EXAMPLE' | 'DRAFT_EXPLANATION' | 'DRAFT_ARTICLE' | 'PUBLISHED';
+    description: string | null;
     exampleDescription: string | null;
     exampleStarterCode: string | null;
     exampleTestsCode: string | null;
@@ -21,6 +22,7 @@ export interface SoupEntryData {
 export interface EntrySummary {
     slug: string;
     title: string;
+    description: string | null;
     hasArticle: boolean;
     publishedAt: string;
 }
@@ -40,11 +42,11 @@ export async function bowlListEntries(password: string): Promise<SoupEntryData[]
     return res.json();
 }
 
-export async function bowlCreateEntry(password: string, title: string, slug: string): Promise<SoupEntryData> {
+export async function bowlCreateEntry(password: string, title: string, slug: string, description: string): Promise<SoupEntryData> {
     const res = await fetch(`${BASE}/entries`, {
         method: 'POST',
         headers: headers(password),
-        body: JSON.stringify({ title, slug }),
+        body: JSON.stringify({ title, slug, description }),
     });
     if (!res.ok) throw new Error(await res.text());
     return res.json();

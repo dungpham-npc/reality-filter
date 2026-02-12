@@ -45,10 +45,11 @@ public class SoupBowlController {
         try {
             String title = body.get("title");
             String slug = body.get("slug");
+            String description = body.get("description");
             if (title == null || slug == null) {
                 return ResponseEntity.badRequest().body("title and slug are required");
             }
-            return ResponseEntity.ok(service.createEntry(title, slug));
+            return ResponseEntity.ok(service.createEntry(title, slug, description));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
