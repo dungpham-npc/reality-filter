@@ -927,6 +927,14 @@ p {
   font-size: 1rem;
 }
 
+.entry-card-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
 /* ---- Reading Modal ---- */
 
 .reading-modal-backdrop {
