@@ -1,4 +1,4 @@
-// Bowl (admin) API client
+import { API_BASE_URL } from './apiConfig';
 
 export interface SoupEntryData {
     id: string;
@@ -25,7 +25,7 @@ export interface EntrySummary {
     publishedAt: string;
 }
 
-const BASE = '/api/bowl';
+const BASE = `${API_BASE_URL}/api/bowl`;
 
 function headers(password: string): Record<string, string> {
     return {
@@ -131,13 +131,13 @@ export async function bowlUnpublish(password: string, id: string): Promise<SoupE
 
 // Public API for user-facing workbench
 export async function fetchPublishedEntries(): Promise<EntrySummary[]> {
-    const res = await fetch('/api/entries');
+    const res = await fetch(`${API_BASE_URL}/api/entries`);
     if (!res.ok) throw new Error(await res.text());
     return res.json();
 }
 
 export async function fetchEntryBySlug(slug: string): Promise<SoupEntryData> {
-    const res = await fetch(`/api/entries/${slug}`);
+    const res = await fetch(`${API_BASE_URL}/api/entries/${slug}`);
     if (!res.ok) throw new Error(await res.text());
     return res.json();
 }

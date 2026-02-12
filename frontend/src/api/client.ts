@@ -1,4 +1,6 @@
-const API_BASE = '/api';
+import { API_BASE_URL } from './apiConfig';
+
+const API_BASE = `${API_BASE_URL}/api`;
 
 export interface SessionData {
     id: string;
